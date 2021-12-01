@@ -1,16 +1,15 @@
 def calcuateIncreases(depths):
     increasesCount = 0
-    for d in range(len(depths) - 1):
-        if depths[d] < depths[d + 1]:
-            increasesCount += 1
-            
+    for x, y in zip(depths, depths[1:]):
+        increasesCount += x < y
+
     return increasesCount
 
 
 def calculateIncresaingSums(depths):
     sums = []
-    for d in range(len(depths) - 2):
-        sums.append(depths[d] + depths[d + 1] + depths[d + 2])
+    for x, y, z in zip(depths, depths[1:], depths[2:]):
+        sums.append(x + y + z)
 
     return calcuateIncreases(sums)
 
@@ -18,5 +17,5 @@ def calculateIncresaingSums(depths):
 depths = [int(x) for x in open("day01.txt", "r")]
 test = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263]
 
-print('Part 1: ' + calcuateIncreases(depths))
-print('Part 2: ' + calculateIncresaingSums(depths))
+print("Part 1:", calcuateIncreases(depths))
+print("Part 2:", calculateIncresaingSums(depths))
