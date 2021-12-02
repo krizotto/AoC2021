@@ -40,7 +40,7 @@ test = [
     ("forward", 2),
 ]
 
-with open("day02.txt", "r") as file:
+with open("data/day02.txt", "r") as file:
     lines = file.readlines()
     lines = [line.rstrip() for line in lines]
 
