@@ -21,7 +21,7 @@ class Point:
 
 def solution(lines, is_part_two):
     if not is_part_two:
-        lines = [x for x in lines if x.check_horizontal or x.check_vertical()]
+        lines = [x for x in lines if x.check_horizontal() or x.check_vertical()]
     grid = []
     for line in lines:
         reversed_y = -1 if line.start.y > line.end.y else 1
@@ -41,11 +41,11 @@ def solution(lines, is_part_two):
                     )
                 )
 
-    more_than_2 = 0
+    count_at_least_twice = 0
     for count in Counter(grid).items():
         if count[1] >= 2:
-            more_than_2 += 1
-    return more_than_2
+            count_at_least_twice += 1
+    return count_at_least_twice
 
 
 def part_one(lines):
@@ -73,8 +73,8 @@ with open("data/day05.txt", "r") as file:
     lines = file.readlines()
     for line in lines:
         input.append(line.strip())
-lines = []
 
+lines = []
 for cords in input:
     start, end = cords.split(" -> ")
     start_xy = [int(x) for x in start.split(",")]
