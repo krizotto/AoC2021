@@ -38,24 +38,11 @@ class Board:
 
         return unmarked_sum
 
-    def print(self):
-        for i in range(5):
-            for j in range(5):
-                self.grid[j + i * 5].print()
-            print("")
-        print("\n")
-
 
 class Cell:
     def __init__(self, value):
         self.value = value
         self.marked = False
-
-    def print(self):
-        if self.marked:
-            print(f"{self.value}* ", end="")
-        else:
-            print(f"{self.value} ", end="")
 
 
 def part_one(boards, numbers):
@@ -79,7 +66,6 @@ with open("data/day04_numbers.txt", "r") as file:
     line = file.readline()
     numbers = [int(x) for x in line.split(",")]
 
-# load board
 grid = [[int(num) for num in line.split()] for line in open("data/day04.txt", "r")]
 
 boards = []
