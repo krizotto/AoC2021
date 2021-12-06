@@ -19,10 +19,10 @@ class Board:
 
     def check_vertical(self):
         for row in range(5):
-            check_column = True
+            check_col = True
             for column in range(5):
-                check_column = check_column and self.grid[row + column * 5].marked
-            if check_column:
+                check_col = check_col and self.grid[row + column * 5].marked
+            if check_col:
                 return True
 
         return False
@@ -33,7 +33,7 @@ class Board:
     def sum_unmarked(self):
         unmarked_sum = 0
         for cell in self.grid:
-            if cell.marked == False:
+            if not cell.marked:
                 unmarked_sum += cell.value
 
         return unmarked_sum
@@ -52,7 +52,7 @@ class Cell:
         self.marked = False
 
     def print(self):
-        if self.marked == True:
+        if self.marked:
             print(f"{self.value}* ", end="")
         else:
             print(f"{self.value} ", end="")
@@ -60,25 +60,19 @@ class Cell:
 
 def part_one(boards, numbers):
     for num in numbers:
-        # print(f"number: {num}")
         for board in boards:
             board.mark(num)
-            # board.print()
             if board.check():
                 return board.sum_unmarked(), num
 
 
-
 def part_two(boards, numbers):
     for num in numbers:
-        # print(f"number: {num}")
         for board in boards:
             board.mark(num)
-            # board.print()
         if len(boards) == 1 and boards[0].check():
             return boards[0].sum_unmarked(), num
         boards = [x for x in boards if not x.check()]
-    
 
 
 with open("data/day04_numbers.txt", "r") as file:
@@ -101,6 +95,10 @@ for line in grid:
 boards.append(temp_board)
 
 unmarked_sum, num = part_one(boards[:], numbers[:])
-print(f"Part 1: result = {unmarked_sum * num}, unmarked sum = {unmarked_sum}, last number = {num}")
+print(
+    f"Part 1: result = {unmarked_sum * num}, unmarked sum = {unmarked_sum}, last number = {num}"
+)
 unmarked_sum, num = part_two(boards[:], numbers[:])
-print(f"Part 2: result = {unmarked_sum * num}, unmarked sum = {unmarked_sum}, last number = {num}")
+print(
+    f"Part 2: result = {unmarked_sum * num}, unmarked sum = {unmarked_sum}, last number = {num}"
+)
