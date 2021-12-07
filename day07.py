@@ -4,7 +4,7 @@ def count_fuel(crabs, i):
     for crab in crabs:
         steps = abs(crab - i)
         total_fuel += steps
-        total_increasing_fuel += int(((steps + 1) * steps) / 2)
+        total_increasing_fuel += ((steps + 1) * steps) // 2
     return total_fuel, total_increasing_fuel
 
 
