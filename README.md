@@ -12,4 +12,4 @@ Day   | Part 1             | Part 2
 5     | :white_check_mark: | :white_check_mark:
 6     | :white_check_mark: | :white_check_mark:
 7     | :white_check_mark: | :white_check_mark:
-8     | :white_check_mark: | :x:
+8     | :white_check_mark: | :white_check_mark:
