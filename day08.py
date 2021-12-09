@@ -50,6 +50,7 @@ class Segment:
                     # now we know 0, 1, 3
                     code.remove(self.mask[2][0])
                     used_letters.extend(self.mask[2][0])
+                    used_letters.extend(self.mask[1][0])
                     if len(self.mask[2]) == 2:
                         code.remove(self.mask[2][1])
                         used_letters.extend(self.mask[2][1])
@@ -64,16 +65,16 @@ class Segment:
                     used_letters.extend(code)
                     # last element must be 6
                     self.mask[6] = code
-                    # last unused letter must be 4
+                    # last unused letters must be 4
                     if self.mask[4] is None or len(self.mask[4]) > 1:
                         self.mask[4] = [
                             e
                             for e in ["a", "b", "c", "d", "e", "f", "g"]
-                            if e not in used_letters
+                            if e not in set(used_letters)
                         ]
                 elif all(x in code for x in self.get_1_3_mask()):
-                    used_letters = []
                     # MUST BE 5
+                    used_letters = []
                     if len(self.mask[2]) == 2:
                         used_letters.extend(self.mask[2][:])
                         if self.mask[2][0] in code:
@@ -82,10 +83,9 @@ class Segment:
                         else:
                             self.mask[5] = list(self.mask[2][1])
                             self.mask[2] = list(self.mask[2][0])
-                    else:
-                        used_letters.extend(self.mask[2][0])
                     # now we know 0, 2, 5
                     code.remove(self.mask[1][0])
+                    used_letters.extend(self.mask[2][0])
                     used_letters.extend(self.mask[1][0])
                     if len(self.mask[1]) == 2:
                         code.remove(self.mask[1][1])
@@ -95,21 +95,18 @@ class Segment:
                         used_letters.extend(self.mask[3][0])
 
                     code.remove(self.mask[0][0])
-                    used_letters.extend(self.mask[5][:])
+                    used_letters.extend(self.mask[0][:])
                     code.remove(self.mask[5][0])
+                    used_letters.extend(self.mask[5][:])
+                    used_letters.extend(code)
                     # last element must be 6
                     self.mask[6] = code
-
-                    # used_letters = self.get_1_3_mask()
-                    used_letters.extend(self.mask[0][:])
-                    used_letters.extend(self.get_1_3_mask())
-                    used_letters.extend(code)
-
+                    # last unused letters must be 4
                     if self.mask[4] is None or len(self.mask[4]) > 1:
                         self.mask[4] = [
                             e
                             for e in ["a", "b", "c", "d", "e", "f", "g"]
-                            if e not in used_letters
+                            if e not in set(used_letters)
                         ]
                 else:
                     # MUST BE 2
