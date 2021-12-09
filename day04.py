@@ -1,3 +1,6 @@
+import time
+
+
 class Board:
     def __init__(self):
         self.grid = []
@@ -62,6 +65,7 @@ def part_two(boards, numbers):
         boards = [x for x in boards if not x.check()]
 
 
+start_time = time.time()
 with open("data/day04_numbers.txt", "r") as file:
     line = file.readline()
     numbers = [int(x) for x in line.split(",")]
@@ -88,3 +92,4 @@ unmarked_sum, num = part_two(boards[:], numbers[:])
 print(
     f"Part 2: result = {unmarked_sum * num}, unmarked sum = {unmarked_sum}, last number = {num}"
 )
+print("--- %s seconds ---" % (time.time() - start_time))

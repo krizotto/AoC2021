@@ -1,3 +1,6 @@
+import time
+
+
 def count_fuel(crabs, i):
     total_fuel = 0
     total_increasing_fuel = 0
@@ -19,6 +22,7 @@ def solution(crabs):
     return min(possible_fuels), min(possible_increasing_fuels)
 
 
+start_time = time.time()
 test = [16, 1, 2, 0, 4, 2, 7, 1, 2, 14]
 with open("data/day07.txt", "r") as f:
     input = f.read().strip()
@@ -26,3 +30,4 @@ input = list(map(int, input.split(",")))
 
 part_one, part_two = solution(input)
 print(f"Part 1: result = {part_one}\nPart 2: result = {part_two}")
+print("--- %s seconds ---" % (time.time() - start_time))

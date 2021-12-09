@@ -1,4 +1,5 @@
 from collections import Counter
+import time
 
 
 class Line:
@@ -56,6 +57,7 @@ def part_two(lines):
     return solution(lines, True)
 
 
+start_time = time.time()
 test = [
     "0,9 -> 5,9",
     "8,0 -> 0,8",
@@ -85,3 +87,4 @@ for cords in input:
 
 print(f"Part 1: result = {part_one(lines[:])}")
 print(f"Part 2: result = {part_two(lines[:])}")
+print("--- %s seconds ---" % (time.time() - start_time))

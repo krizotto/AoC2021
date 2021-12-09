@@ -1,4 +1,5 @@
 from copy import deepcopy
+import time
 
 
 def grow_fish(fish, days):
@@ -14,6 +15,7 @@ def grow_fish(fish, days):
     return fish
 
 
+start_time = time.time()
 with open("data/day06.txt", "r") as f:
     input = f.read().strip()
 input = list(map(int, input.split(",")))
@@ -28,3 +30,4 @@ result_part_2 = grow_fish(fishes, 256)
 
 print(f"Part 1: result = {sum(result_part_1.values())}")
 print(f"Part 2: result = {sum(result_part_2.values())}")
+print("--- %s seconds ---" % (time.time() - start_time))

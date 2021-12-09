@@ -1,3 +1,6 @@
+import time
+
+
 def countIncreases(depths):
     increasesCount = 0
     for x, y in zip(depths, depths[1:]):
@@ -12,8 +15,10 @@ def countIncreasingSums(depths):
     return countIncreases(sums)
 
 
+start_time = time.time()
 depths = [int(x) for x in open("data/day01.txt", "r")]
 test = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263]
 
 print("Part 1:", countIncreases(depths))
 print("Part 2:", countIncreasingSums(depths))
+print("--- %s seconds ---" % (time.time() - start_time))

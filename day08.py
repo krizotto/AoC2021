@@ -1,3 +1,6 @@
+import time
+
+
 class Segment:
     def __init__(self, signals, output):
         self.signals = signals
@@ -258,6 +261,7 @@ def split_input(input):
     return input[0:10], input[11:16]
 
 
+start_time = time.time()
 input = []
 with open("data/day08.txt", "r") as file:
     lines = file.readlines()
@@ -276,6 +280,6 @@ for segment in segments:
     total_1478 += len(segment.count_1478())
     total_output += segment.count_output()
 
-
 print(f"Part 1: result = {total_1478}")
 print(f"Part 2: result = {total_output}")
+print("--- %s seconds ---" % (time.time() - start_time))

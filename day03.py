@@ -1,3 +1,6 @@
+import time
+
+
 def countMostCommon(data):
     return max(set(data), key=data.count)
 
@@ -51,6 +54,7 @@ def processPart2(data):
     return processMostCommon(data, 0), processLeastCommon(data, 0)
 
 
+start_time = time.time()
 test = [
     "00100",
     "11110",
@@ -73,3 +77,4 @@ oxygen, co2 = processPart2(data)
 
 print(f"Part 1: result = {gamma*epsilon}, gamma = {gamma}, epsilon = {epsilon}")
 print(f"Part 2: result = {oxygen*co2}, oxygen = {oxygen}, co2 = {co2}")
+print("--- %s seconds ---" % (time.time() - start_time))

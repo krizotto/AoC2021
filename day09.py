@@ -1,4 +1,5 @@
 import numpy
+import time
 
 
 def part_one(numbers):
@@ -8,22 +9,22 @@ def part_one(numbers):
         for j in range(cols):
             is_lowest = True
             # UP
-            if i - 1 >= 0:
+            if i - 1 >= 0 and is_lowest:
                 is_lowest = numbers[i][j] < numbers[i - 1][j]
                 if not is_lowest:
                     continue
             # LEFT
-            if j - 1 >= 0:
+            if j - 1 >= 0 and is_lowest:
                 is_lowest = numbers[i][j] < numbers[i][j - 1]
                 if not is_lowest:
                     continue
             # DOWN
-            if i + 1 < rows:
+            if i + 1 < rows and is_lowest:
                 is_lowest = numbers[i][j] < numbers[i + 1][j]
                 if not is_lowest:
                     continue
             # RIGHT
-            if j + 1 < cols:
+            if j + 1 < cols and is_lowest:
                 is_lowest = numbers[i][j] < numbers[i][j + 1]
                 if not is_lowest:
                     continue
@@ -55,6 +56,7 @@ def part_two(numbers, cords):
     return basins[0] * basins[1] * basins[2]
 
 
+start_time = time.time()
 numbers = []
 with open("data/day09.txt", "r") as file:
     lines = file.readlines()
@@ -65,6 +67,6 @@ with open("data/day09.txt", "r") as file:
 numbers = numpy.array(numbers).reshape((rows, cols))
 
 part_one_cords = part_one(numbers[:])
-
 print("Part 1: result = ", sum([numbers[i][j] + 1 for i, j in part_one_cords]))
 print("Part 2: result = ", part_two(numbers[:], part_one_cords))
+print("--- %s seconds ---" % (time.time() - start_time))
