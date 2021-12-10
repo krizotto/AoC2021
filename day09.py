@@ -52,21 +52,19 @@ def part_two(numbers, cords):
     basins = [[] for x in range(len(cords))]
     for i in range(len(cords)):
         count_basin(numbers, basins[i], cords[i])
-    basins = sorted([len(basin) for basin in basins], reverse=True)
-    return basins[0] * basins[1] * basins[2]
+    return numpy.product(sorted([len(basin) for basin in basins], reverse=True)[:3])
 
 
 start_time = time.time()
 numbers = []
 with open("data/day09.txt", "r") as file:
     lines = file.readlines()
-    cols = len(lines[0].strip())
-    rows = len(lines)
+    rows, cols = len(lines), len(lines[0].strip())
     for line in lines:
         numbers.extend(int(x) for x in list(line.strip()))
 numbers = numpy.array(numbers).reshape((rows, cols))
 
-part_one_cords = part_one(numbers[:])
+part_one_cords = part_one(numbers)
 print("Part 1: result = ", sum([numbers[i][j] + 1 for i, j in part_one_cords]))
-print("Part 2: result = ", part_two(numbers[:], part_one_cords))
+print("Part 2: result = ", part_two(numbers, part_one_cords))
 print("--- %s seconds ---" % (time.time() - start_time))
