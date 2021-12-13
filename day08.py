@@ -256,20 +256,20 @@ class Segment:
         return 1000 * numbers[0] + 100 * numbers[1] + 10 * numbers[2] + numbers[3]
 
 
-def split_input(input):
-    input = [x for x in input.split(" ")]
-    return input[0:10], input[11:16]
+def split_input(data):
+    data = [x for x in data.split(" ")]
+    return data[0:10], data[11:16]
 
 
 start_time = time.time()
-input = []
+data = []
 with open("data/day08.txt", "r") as file:
     lines = file.readlines()
     for line in lines:
-        input.append(line.strip())
+        data.append(line.strip())
 
 segments = []
-for i in input:
+for i in data:
     signals, output = split_input(i)
     segments.append(Segment(signals, output))
 
