@@ -49,7 +49,7 @@ def count_basin(numbers, basin, cord):
 
 
 def part_two(numbers, cords):
-    basins = [[] for x in range(len(cords))]
+    basins = [[] for _ in range(len(cords))]
     for i in range(len(cords)):
         count_basin(numbers, basins[i], cords[i])
     return numpy.product(sorted([len(basin) for basin in basins], reverse=True)[:3])

@@ -4,16 +4,10 @@ import time
 
 def solution(data, folding):
     for fold in folding:
-        if fold[0] == "x":
-            for p in data:
-                if p[0] < fold[1]:
-                    continue
-                p[0] = 2 * fold[1] - p[0]
-        else:
-            for p in data:
-                if p[1] < fold[1]:
-                    continue
-                p[1] = 2 * fold[1] - p[1]
+        for p in data:
+            if p[fold[0]] < fold[1]:
+                continue
+            p[fold[0]] = 2 * fold[1] - p[fold[0]]
         data = list(map(list, set(map(tuple, data))))
     return data
 
@@ -40,6 +34,7 @@ def part_two(data, folding):
 start_time = time.time()
 data = []
 folding = []
+folds = {"x": 0, "y": 1}
 with open("data/day13.txt", "r") as file:
     delimiter = ","
     for line in file.readlines():
@@ -50,7 +45,7 @@ with open("data/day13.txt", "r") as file:
         if not x.startswith("fold"):
             data.append([int(x), int(y)])
         else:
-            folding.append([x[-1], int(y)])
+            folding.append([folds[x[-1]], int(y)])
 
 print(f"Part 1: result = {part_one(deepcopy(data), folding)}")
 print("Part 2: result:\n")

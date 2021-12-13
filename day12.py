@@ -2,7 +2,9 @@ import time
 from collections import defaultdict
 
 
-def part_one(graph, node="start", path=[]):
+def part_one(graph, node="start", path=None):
+    if path is None:
+        path = []
     path_count = 0
     if node.islower() and node in path:
         return path_count
@@ -15,7 +17,9 @@ def part_one(graph, node="start", path=[]):
     return path_count
 
 
-def part_two(graph, node="start", path=[], is_double_used=False):
+def part_two(graph, node="start", path=None, is_double_used=False):
+    if path is None:
+        path = []
     path_count = 0
     if node.islower() and node in path and (is_double_used or node in ["start", "end"]):
         return path_count

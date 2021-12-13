@@ -1,7 +1,7 @@
 import time
 
 
-def countPositionAndDepth(movement):
+def count_position_and_depth(movement):
     position = 0
     depth = 0
 
@@ -16,7 +16,7 @@ def countPositionAndDepth(movement):
     return (position, depth)
 
 
-def countPositionAndDepthWithAiming(movement):
+def count_position_and_depth_with_aiming(movement):
     position = 0
     depth = 0
     aim = 0
@@ -52,8 +52,8 @@ for line in lines:
     command, size = line.split(" ")
     inputFile.append((command, int(size)))
 
-(pos, dep) = countPositionAndDepth(inputFile)
+(pos, dep) = count_position_and_depth(inputFile)
 print(f"Part 1: {pos*dep} (position = {pos}, depth = {dep})")
-(pos, dep) = countPositionAndDepthWithAiming(inputFile)
+(pos, dep) = count_position_and_depth_with_aiming(inputFile)
 print(f"Part 2: {pos*dep} (position = {pos}, depth = {dep})")
 print("--- %s seconds ---" % (time.time() - start_time))

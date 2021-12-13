@@ -1,57 +1,57 @@
 import time
 
 
-def countMostCommon(data):
+def count_most_common(data):
     return max(set(data), key=data.count)
 
 
-def countLeastCommon(data):
+def count_least_common(data):
     return min(set(data), key=data.count)
 
 
-def processPart1(data):
-    mostCommon = ""
-    leastCommon = ""
+def part_one(data):
+    most_common = ""
+    least_common = ""
     for i in range(len(data[0])):
         characters = [x[i] for x in data]
-        mostCommon += countMostCommon(characters)
-        leastCommon += countLeastCommon(characters)
-    return int(mostCommon, 2), int(leastCommon, 2)
+        most_common += count_most_common(characters)
+        least_common += count_least_common(characters)
+    return int(most_common, 2), int(least_common, 2)
 
 
-def processMostCommon(data, i):
+def process_most_common(data, i):
     characters = [x[i] for x in data]
-    toSave = countMostCommon(characters)
-    toDelete = countLeastCommon(characters)
+    to_save = count_most_common(characters)
+    to_delete = count_least_common(characters)
 
-    if toSave == toDelete:
-        toSave = "1"
-    data = [x for x in data if x[i] == toSave]
+    if to_save == to_delete:
+        to_save = "1"
+    data = [x for x in data if x[i] == to_save]
 
     if len(data) == 1:
         return int(data[0], 2)
     else:
-        return processMostCommon(data, i + 1)
+        return process_most_common(data, i + 1)
 
 
-def processLeastCommon(data, i):
+def process_least_common(data, i):
     characters = [x[i] for x in data]
-    toSave = countLeastCommon(characters)
-    toDelete = countMostCommon(characters)
+    to_save = count_least_common(characters)
+    to_delete = count_most_common(characters)
 
-    if toSave == toDelete:
-        toSave = "0"
+    if to_save == to_delete:
+        to_save = "0"
 
-    data = [x for x in data if x[i] == toSave]
+    data = [x for x in data if x[i] == to_save]
 
     if len(data) == 1:
         return int(data[0], 2)
     else:
-        return processLeastCommon(data, i + 1)
+        return process_least_common(data, i + 1)
 
 
-def processPart2(data):
-    return processMostCommon(data, 0), processLeastCommon(data, 0)
+def part_two(data):
+    return process_most_common(data, 0), process_least_common(data, 0)
 
 
 start_time = time.time()
@@ -72,8 +72,8 @@ test = [
 
 data = [x.strip() for x in open("data/day03.txt", "r")]
 
-gamma, epsilon = processPart1(data)
-oxygen, co2 = processPart2(data)
+gamma, epsilon = part_one(data)
+oxygen, co2 = part_two(data)
 
 print(f"Part 1: result = {gamma*epsilon}, gamma = {gamma}, epsilon = {epsilon}")
 print(f"Part 2: result = {oxygen*co2}, oxygen = {oxygen}, co2 = {co2}")

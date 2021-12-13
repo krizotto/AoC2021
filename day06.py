@@ -3,7 +3,7 @@ import time
 
 
 def grow_fish(fish, days):
-    for loop in range(days):
+    for _ in range(days):
         new_fishes = {a: 0 for a in range(9)}
         for day in range(9):
             if day == 0:

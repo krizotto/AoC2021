@@ -53,7 +53,7 @@ def step(octopuses):
 
 
 def part_one(octopuses):
-    return sum(step(octopuses) for i in range(100))
+    return sum(step(octopuses) for _ in range(100))
 
 
 def part_two(octopuses):

@@ -1,24 +1,24 @@
 import time
 
 
-def countIncreases(depths):
-    increasesCount = 0
+def count_increases(depths):
+    increases_count = 0
     for x, y in zip(depths, depths[1:]):
-        increasesCount += x < y
-    return increasesCount
+        increases_count += x < y
+    return increases_count
 
 
-def countIncreasingSums(depths):
+def count_increasing_sums(depths):
     sums = []
     for x, y, z in zip(depths, depths[1:], depths[2:]):
         sums.append(x + y + z)
-    return countIncreases(sums)
+    return count_increases(sums)
 
 
 start_time = time.time()
 depths = [int(x) for x in open("data/day01.txt", "r")]
 test = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263]
 
-print("Part 1:", countIncreases(depths))
-print("Part 2:", countIncreasingSums(depths))
+print("Part 1:", count_increases(depths))
+print("Part 2:", count_increasing_sums(depths))
 print("--- %s seconds ---" % (time.time() - start_time))
