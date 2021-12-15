@@ -17,6 +17,11 @@ def extend(numbers):
     return new_numbers
 
 
+def get_neighbors(x, y, size):
+    potential_neighbors = [(x, y - 1), (x - 1, y), (x, y + 1), (x + 1, y)]
+    return [(x, y) for x, y in potential_neighbors if 0 <= x < size and 0 <= y < size]
+
+
 def prepare_graph(numbers):
     G = nx.DiGraph()
     size = len(numbers)
@@ -24,14 +29,8 @@ def prepare_graph(numbers):
     for y in range(size):
         for x in range(size):
             weight = numbers[y][x]
-            if y - 1 >= 0:
-                edges.append(((x, y - 1), (x, y), weight))
-            if x - 1 >= 0:
-                edges.append(((x - 1, y), (x, y), weight))
-            if y < size:
-                edges.append(((x, y + 1), (x, y), weight))
-            if x < size:
-                edges.append(((x + 1, y), (x, y), weight))
+            for neighbor in get_neighbors(x, y, size):
+                edges.append((neighbor, (x, y), weight))
     G.add_weighted_edges_from(edges)
     return G
 
@@ -53,6 +52,5 @@ with open("data/day15.txt", "r") as f:
 numbers = np.array(numbers).reshape((grid_size, grid_size))
 
 print(f"Part 1: result = {solution(numbers)}")
-numbers = extend(numbers)
-print(f"Part 2: result = {solution(numbers)}")
+print(f"Part 2: result = {solution(extend(numbers))}")
 print("--- %s seconds ---" % (time.time() - start_time))
