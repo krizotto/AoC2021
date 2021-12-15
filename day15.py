@@ -1,5 +1,6 @@
 import networkx as nx
 import numpy as np
+import time
 
 
 def extend(numbers):
@@ -42,6 +43,7 @@ def solution(numbers):
     return sum([numbers[p[1]][p[0]] for p in path]) - numbers[0][0]
 
 
+start_time = time.time()
 numbers = []
 with open("data/day15.txt", "r") as f:
     lines = f.readlines()
@@ -53,3 +55,4 @@ numbers = np.array(numbers).reshape((grid_size, grid_size))
 print(f"Part 1: result = {solution(numbers)}")
 numbers = extend(numbers)
 print(f"Part 2: result = {solution(numbers)}")
+print("--- %s seconds ---" % (time.time() - start_time))
