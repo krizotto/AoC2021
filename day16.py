@@ -1,24 +1,5 @@
 import math, time
 
-h2b = {
-    "0": "0000",
-    "1": "0001",
-    "2": "0010",
-    "3": "0011",
-    "4": "0100",
-    "5": "0101",
-    "6": "0110",
-    "7": "0111",
-    "8": "1000",
-    "9": "1001",
-    "A": "1010",
-    "B": "1011",
-    "C": "1100",
-    "D": "1101",
-    "E": "1110",
-    "F": "1111",
-}
-
 
 def b2d(b):
     pos_value = 1
@@ -46,7 +27,7 @@ def process_literal(bits):
     return b2d(binary_string), bits
 
 
-def get_value_by_type_id(type_id, subpackets_values):
+def value_by_type(type_id, subpackets_values):
     if type_id == "000":
         value = sum(subpackets_values)
     elif type_id == "001":
@@ -89,10 +70,28 @@ def solution(bits):
                 value, bits = solution(bits)
                 subpackets_values.append(value)
 
-    return get_value_by_type_id(type_id, subpackets_values), bits
+    return value_by_type(type_id, subpackets_values), bits
 
 
 start_time = time.time()
+h2b = {
+    "0": "0000",
+    "1": "0001",
+    "2": "0010",
+    "3": "0011",
+    "4": "0100",
+    "5": "0101",
+    "6": "0110",
+    "7": "0111",
+    "8": "1000",
+    "9": "1001",
+    "A": "1010",
+    "B": "1011",
+    "C": "1100",
+    "D": "1101",
+    "E": "1110",
+    "F": "1111",
+}
 bits = ""
 version_numbers = 0
 with open("data/day16.txt", "r") as f:
