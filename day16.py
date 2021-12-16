@@ -1,4 +1,4 @@
-import math
+import math, time
 
 h2b = {
     "0": "0000",
@@ -92,6 +92,7 @@ def solution(bits):
     return get_value_by_type_id(type_id, subpackets_values), bits
 
 
+start_time = time.time()
 bits = ""
 version_numbers = 0
 with open("data/day16.txt", "r") as f:
@@ -101,3 +102,4 @@ with open("data/day16.txt", "r") as f:
 eval, bits = solution(bits)
 print("Part 1: result = ", version_numbers)
 print("Part 2: result = ", eval)
+print("--- %s seconds ---" % (time.time() - start_time))
