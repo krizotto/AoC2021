@@ -1,4 +1,5 @@
-import math, time
+import math
+import time
 
 
 def b2d(b):
