@@ -21,7 +21,7 @@ Day   | Part 1             | Part 2
 14    | :white_check_mark: | :white_check_mark:
 15    | :white_check_mark: | :white_check_mark:
 16    | :white_check_mark: | :white_check_mark:
-17    | :x:                | :x:
+17    | :white_check_mark: | :white_check_mark:
 18    | :x:                | :x:
 19    | :x:                | :x:
 20    | :white_check_mark: | :white_check_mark:
