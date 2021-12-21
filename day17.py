@@ -29,9 +29,7 @@ def simulate(velocity, target):
         vy -= 1
         if y > max_y:
             max_y = y
-        if (x in range(target["x"][0], target["x"][1] + 1)) and (
-            y in range(target["y"][0], target["y"][1] + 1)
-        ):
+        if (x in range(target["x"][0], target["x"][1] + 1)) and (y in range(target["y"][0], target["y"][1] + 1)):
             return True, velocity, max_y
 
     return False, velocity, max_y

@@ -85,11 +85,7 @@ for line in grid:
 boards.append(temp_board)
 
 unmarked_sum, num = part_one(boards[:], numbers[:])
-print(
-    f"Part 1: result = {unmarked_sum * num}, unmarked sum = {unmarked_sum}, last number = {num}"
-)
+print(f"Part 1: result = {unmarked_sum * num}, unmarked sum = {unmarked_sum}, last number = {num}")
 unmarked_sum, num = part_two(boards[:], numbers[:])
-print(
-    f"Part 2: result = {unmarked_sum * num}, unmarked sum = {unmarked_sum}, last number = {num}"
-)
+print(f"Part 2: result = {unmarked_sum * num}, unmarked sum = {unmarked_sum}, last number = {num}")
 print("--- %s seconds ---" % (time.time() - start_time))

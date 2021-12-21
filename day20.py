@@ -10,9 +10,7 @@ def count_square(subarray):
 
 def solution(output, iterations):
     for _ in range(iterations):
-        output = ndimage.generic_filter(
-            np.pad(output, 1, mode="edge"), count_square, size=(3, 3), mode="nearest"
-        )
+        output = ndimage.generic_filter(np.pad(output, 1, mode="edge"), count_square, size=(3, 3), mode="nearest")
 
     return output
 
@@ -27,12 +25,7 @@ decoder = np.fromiter(
     count=len(decoder.strip()),
 )
 
-image = np.array(
-    [
-        [True if char == "#" else False for char in line]
-        for line in image.strip().split("\n")
-    ]
-)
+image = np.array([[True if char == "#" else False for char in line] for line in image.strip().split("\n")])
 
 output = np.pad(image, 1, mode="constant", constant_values=False)
 

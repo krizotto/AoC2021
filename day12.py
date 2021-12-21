@@ -29,11 +29,7 @@ def part_two(graph, node="start", path=None, is_double_used=False):
     if "end" in path:
         return 1
     for child in graph[node]:
-        if (
-            not child.islower()
-            or child not in path
-            or (not is_double_used and node not in ["start", "end"])
-        ):
+        if not child.islower() or child not in path or (not is_double_used and node not in ["start", "end"]):
             path_count += part_two(graph, child, path[:], is_double_used)
     return path_count
 

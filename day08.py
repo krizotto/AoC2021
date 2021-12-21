@@ -70,11 +70,7 @@ class Segment:
                     self.mask[6] = code
                     # last unused letters must be 4
                     if self.mask[4] is None or len(self.mask[4]) > 1:
-                        self.mask[4] = [
-                            e
-                            for e in ["a", "b", "c", "d", "e", "f", "g"]
-                            if e not in set(used_letters)
-                        ]
+                        self.mask[4] = [e for e in ["a", "b", "c", "d", "e", "f", "g"] if e not in set(used_letters)]
                 elif all(x in code for x in self.get_1_3_mask()):
                     # MUST BE 5
                     used_letters = []
@@ -106,11 +102,7 @@ class Segment:
                     self.mask[6] = code
                     # last unused letters must be 4
                     if self.mask[4] is None or len(self.mask[4]) > 1:
-                        self.mask[4] = [
-                            e
-                            for e in ["a", "b", "c", "d", "e", "f", "g"]
-                            if e not in set(used_letters)
-                        ]
+                        self.mask[4] = [e for e in ["a", "b", "c", "d", "e", "f", "g"] if e not in set(used_letters)]
                 else:
                     # MUST BE 2
                     if len(self.mask[2]) == 2:
@@ -159,44 +151,13 @@ class Segment:
             # 1
             "".join(sorted(self.mask[2][0] + self.mask[5][0])),
             # 2
-            "".join(
-                sorted(
-                    self.mask[0][0]
-                    + self.mask[2][0]
-                    + self.mask[3][0]
-                    + self.mask[4][0]
-                    + self.mask[6][0]
-                )
-            ),
+            "".join(sorted(self.mask[0][0] + self.mask[2][0] + self.mask[3][0] + self.mask[4][0] + self.mask[6][0])),
             # 3
-            "".join(
-                sorted(
-                    self.mask[0][0]
-                    + self.mask[2][0]
-                    + self.mask[3][0]
-                    + self.mask[5][0]
-                    + self.mask[6][0]
-                )
-            ),
+            "".join(sorted(self.mask[0][0] + self.mask[2][0] + self.mask[3][0] + self.mask[5][0] + self.mask[6][0])),
             # 4
-            "".join(
-                sorted(
-                    self.mask[1][0]
-                    + self.mask[2][0]
-                    + self.mask[3][0]
-                    + self.mask[5][0]
-                )
-            ),
+            "".join(sorted(self.mask[1][0] + self.mask[2][0] + self.mask[3][0] + self.mask[5][0])),
             # 5
-            "".join(
-                sorted(
-                    self.mask[0][0]
-                    + self.mask[1][0]
-                    + self.mask[3][0]
-                    + self.mask[5][0]
-                    + self.mask[6][0]
-                )
-            ),
+            "".join(sorted(self.mask[0][0] + self.mask[1][0] + self.mask[3][0] + self.mask[5][0] + self.mask[6][0])),
             # 6
             "".join(
                 sorted(
