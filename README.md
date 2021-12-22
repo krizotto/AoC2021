@@ -26,3 +26,4 @@ Day   | Part 1             | Part 2
 19    | :x:                | :x:
 20    | :white_check_mark: | :white_check_mark:
 21    | :white_check_mark: | :white_check_mark:
+22    | :white_check_mark: | :x:
