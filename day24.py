@@ -17,7 +17,7 @@ def do_action(action, v1, v2):
 def process_instruction(action, arg1, arg2, x, y, z, w):
     d = {"x": x, "y": y, "z": z, "w": w}
     v1, v2 = 0, 0
-    if re.match("(0-9)+", arg2) is not None:
+    if re.match("-?\d+", arg2) is not None:
         v2 = int(arg2)
     else:
         v2 = d[arg2]
@@ -46,7 +46,7 @@ def process(monad: int, instructions: list):
         actions = instruction.split(" ")
         action = actions[0]
         arg1 = actions[1]
-        if len(actions == 3):
+        if len(actions) == 3:
             arg2 = actions[2]
 
         if action == "inp":
@@ -60,14 +60,13 @@ def process(monad: int, instructions: list):
     return z == 0
 
 
-
 with open("data/day24.txt") as f:
     instructions = [x.strip() for x in f.readlines()]
 
 monad_min = 11111111111111
 monad_max = 99999999999999
 highest_monad = 0
-
+print(process(39924989499969, instructions))
 for i in range(monad_min, monad_max + 1):
     print(i)
     if process(i, instructions):
